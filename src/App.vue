@@ -76,6 +76,7 @@
     },
     created() {
       console.log('屏幕宽度' + window.screen.availWidth)
+      console.log(this.$route)
       // 初始化主题列表 主页内容
       this.requestThemeList();
       this.requestLatest();

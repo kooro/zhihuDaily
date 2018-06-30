@@ -44,7 +44,7 @@
         console.log('getBeforeDay')
         var date = this.HomeList[this.HomeList.length - 1].date.format("YYYYMMDD")
         console.log(date)
-        this.requestBefore(date).then().then(() => {
+        this.requestBefore(date).then(() => {
           this.$refs.mainScroller.donePullup()
           console.log('loading end0')
         })

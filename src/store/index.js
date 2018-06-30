@@ -16,7 +16,7 @@ const detailsApi = host + '/api/4/news/'
 
 const themesContentApi = host + '/api/4/theme/'
 
-const themesContentBeforeApi = 'http://news-at.zhihu.com/api/4/theme/11/before/7119483'
+const themesContentBeforeApi = host + '/api/4/theme/themeid/before/storyid'
 
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production', // 在非生产环境下，使用严格模式
@@ -58,6 +58,13 @@ export default new Vuex.Store({
       state.tempDetails = val
     },
     setTempThemeContent(state, val) {
+      console.log(val.themeid)
+      if (state.tempThemeContent.stories && val.stories && val.themeid == undefined) {
+        state.tempThemeContent.stories = state.tempThemeContent.stories.concat(val.stories)
+        console.log('theme拼接')
+        return
+      }
+      console.log('theme重新赋值')
       state.tempThemeContent = val
     },
     // 修改显示的标题
@@ -134,6 +141,18 @@ export default new Vuex.Store({
     },
     requestThemeHome: async function (context, themeid) {
       await axios.get(themesContentApi + themeid).then(res => {
+        res.data.themeid = themeid
+        context.commit('setTempThemeContent', res.data)
+      })
+    },
+    requestThemeHomeBefore: async function (context, themeid) {
+      if (context.state.tempThemeContent.stories == undefined || context.state.tempThemeContent.stories.length === 0) {
+        return
+      }
+      let storyid = context.state.tempThemeContent.stories[context.state.tempThemeContent.stories.length - 1].id
+      let beforApi = themesContentBeforeApi.replace('themeid', themeid).replace('storyid', storyid)
+      console.log(beforApi)
+      await axios.get(beforApi).then(res => {
         context.commit('setTempThemeContent', res.data)
       })
     }
