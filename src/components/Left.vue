@@ -1,7 +1,7 @@
 <template>
   <div id="left-component">
     <!-- 投向区域 -->
-    <a class="userinfo" href="/userinfo">
+    <a class="userinfo" href="https://github.com/kooro/zhihuDaily">
       <div class="userinfo-icon" :style="{backgroundImage:'url(' + userinfo.icon + ')'}">
         <span class="userinfo-name">{{userinfo.name}}</span>
       </div>
@@ -49,17 +49,17 @@
         },
         userOperation: [{
             title: "收藏",
-            href: "/",
+            href: "https://github.com/kooro/zhihuDaily",
             icon: require("@/assets/icon/operate-store.svg")
           },
           {
             title: "消息",
-            href: "/",
+            href: "https://github.com/kooro/zhihuDaily",
             icon: require("@/assets/icon/operate-message.svg")
           },
           {
             title: "收藏",
-            href: "/",
+            href: "https://github.com/kooro/zhihuDaily",
             icon: require("@/assets/icon/operate-setting.svg")
           }
         ]

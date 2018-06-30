@@ -1,7 +1,7 @@
 {
-  "name": "vuxtest",
+  "name": "zhihudaily",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A Vux project",
   "author": "biu <imqiuyi@gmail.com>",
   "private": true,
   "scripts": {

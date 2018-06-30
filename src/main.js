@@ -80,6 +80,14 @@ Vue.config.productionTip = false
 
 sync(store, router) //将 router 同步到 vuex的state中 （store.state.route.path ）
 
+// google统计
+
+router.afterEach(function (to) {
+  if (window.ga) {
+    window.ga('set', 'page', to.name) // 你可能想根据请求参数添加其他参数，可以修改这里的 to.fullPath
+    window.ga('send', 'pageview')
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   router,
